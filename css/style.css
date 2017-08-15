@@ -9,11 +9,21 @@ html, body {
   height: 100%;
   background-color: #000000;
   font-family: "GillSans";
-  color: #ffffff; }
+  color: #ffffff;
+  font-size: 32px; }
   html *, body * {
     padding: 0;
     margin: 0;
     border: none; }
+  @media (max-width: 900px) {
+    html, body {
+      font-size: 24px; } }
+  @media (max-width: 720px) {
+    html, body {
+      font-size: 20px; } }
+  @media (max-width: 480px) {
+    html, body {
+      font-size: 18px; } }
 
 body {
   opacity: 0; }
@@ -22,7 +32,7 @@ body {
       overflow-x: hidden; } }
 
 a {
-  color: #2aa5d1;
+  color: #5471cf;
   text-decoration: none;
   pointer-events: all; }
 
@@ -59,7 +69,7 @@ ul#tweet-list {
 
 li {
   position: relative;
-  max-width: 500px;
+  max-width: 1600px;
   padding: 24px;
   border-radius: 6px;
   background-color: rgba(0, 0, 0, 0.6); }
@@ -221,26 +231,53 @@ li {
       font-size: 1.3rem;
       line-height: 1.1; } }
 
-.tweet-text {
-  font-size: 1.6rem;
-  margin-top: 10px;
-  margin-bottom: 16px; }
-  @media (max-width: 480px) {
-    .tweet-text {
-      font-size: 1rem; } }
-
 .tweet-info {
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  -o-display: flex;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  -o-align-items: center;
+  align-items: center;
   position: relative;
   z-index: 2;
-  pointer-events: none; }
+  pointer-events: none;
+  margin-top: 10px; }
+  @media (max-width: 720px) {
+    .tweet-info {
+      display: block;
+      margin-top: 20px; } }
+
+.tweet-text {
+  font-size: 1.6rem; }
+  @media (max-width: 720px) {
+    .tweet-text {
+      font-size: 1rem;
+      margin-top: 16px; } }
 
 .media-container {
-  max-height: 400px;
+  min-width: 230px;
+  max-width: 500px;
+  max-height: 700px;
   width: 100%;
   text-align: center;
-  overflow: hidden; }
+  overflow: hidden;
+  margin-top: 10px;
+  padding-right: 30px; }
   .media-container img {
     width: 100%; }
+  @media (max-width: 720px) {
+    .media-container {
+      padding-right: 0px;
+      max-width: auto;
+      max-height: 400px; } }
 
 .screen-name {
   font-family: "Telex";

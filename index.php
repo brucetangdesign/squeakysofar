@@ -11,7 +11,8 @@ $settings = array(
 );
 
 $url = 'https://api.twitter.com/1.1/search/tweets.json';
-$getfield = '?q=#sofarnyc&result_type=mixed&tweet_mode=extended&exclude=retweets&count=50';
+$getfield = '?q=#AlwaysBeNiceNYC+OR+#SoFarSoundsNYC+OR+#SoFarNYC+OR+#SqueakySoFar&result_type=mixed&tweet_mode=extended&exclude=retweets&count=50';
+//$getfield = '?q=#SoFarSoundsNYC&result_type=mixed&tweet_mode=extended&exclude=retweets&count=50';
 $requestMethod = 'GET';
 
 $twitter = new TwitterAPIExchange($settings);
@@ -84,7 +85,8 @@ date_default_timezone_set('America/New_York');
                   //profile info
                   echo '<div class="profile-info">';
                     //pic
-                    $profile_pic = $statuses->user->profile_image_url;
+                    //$profile_pic = $statuses->user->profile_image_url;
+                    $profile_pic = str_replace("_normal", "_bigger", $statuses->user->profile_image_url);
                     echo '<div class="profile-pic"><img src="'.$profile_pic.'"></div>';
                     //name
                     echo '<div class="user-name">';
@@ -94,9 +96,6 @@ date_default_timezone_set('America/New_York');
                   echo '</div>';//end profile info
                   //tweet info
                   echo '<div class="tweet-info">';
-                    //tweet text
-                    echo '<div class="tweet-text">'.linkify_tweet($text).'</div>';
-
                     //media
                     if (isset($statuses->entities->media)) {
                       $media_url = $statuses->entities->media[0]->media_url;
@@ -104,6 +103,9 @@ date_default_timezone_set('America/New_York');
                         echo '<img src="'.$media_url.'">';
                       echo '</div>';
                     }
+
+                    //tweet text
+                    echo '<div class="tweet-text">'.linkify_tweet($text).'</div>';
 
                     //time stamp
                     //echo '<div class="timestamp">'.date("F jS, Y  g:ia",strtotime($statuses->created_at)).'</div>';
@@ -116,9 +118,9 @@ date_default_timezone_set('America/New_York');
 
       <?php
       //raw data - turn off when live
-      /*echo "<div style='display:none'>";
+      echo "<div style='display:none'>";
       print_r($data);
-      echo "</div>";*/
+      echo "</div>";
       ?>
     </section>
   </body>
