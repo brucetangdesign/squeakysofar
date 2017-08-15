@@ -15,9 +15,11 @@ html, body {
     margin: 0;
     border: none; }
 
-@media (max-width: 720px) {
-  body {
-    overflow-x: hidden; } }
+body {
+  opacity: 0; }
+  @media (max-width: 720px) {
+    body {
+      overflow-x: hidden; } }
 
 a {
   color: #2aa5d1;
@@ -39,11 +41,11 @@ ul#tweet-list {
   -ms-align-items: center;
   -o-align-items: center;
   align-items: center;
-  -webkit-justify-content: left;
-  -moz-justify-content: left;
-  -ms-justify-content: left;
-  -o-justify-content: left;
-  justify-content: left;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  -ms-justify-content: center;
+  -o-justify-content: center;
+  justify-content: center;
   position: relative;
   list-style-type: none;
   width: 100%; }
@@ -119,17 +121,29 @@ li {
   -o-justify-content: space-between;
   justify-content: space-between;
   width: 100%; }
-  @media (max-width: 720px) {
+  @media (max-width: 480px) {
     .header {
       flex-wrap: wrap;
-      text-align: center;
-      -webkit-justify-content: center;
-      -moz-justify-content: center;
-      -ms-justify-content: center;
-      -o-justify-content: center;
-      justify-content: center; }
+      text-align: center; }
       .header .logo {
-        flex-basis: 100%; } }
+        margin-left: auto;
+        margin-right: auto; } }
+
+.logo {
+  display: inline-block;
+  max-width: 200px; }
+  .logo img {
+    width: 100%; }
+  @media (max-width: 720px) {
+    .logo {
+      max-width: 150px; } }
+  @media (max-width: 480px) {
+    .logo {
+      max-width: 116px; } }
+
+.squeaky-logo {
+  top: -13px;
+  position: relative; }
 
 .slideshow {
   position: fixed;

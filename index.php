@@ -64,7 +64,8 @@ date_default_timezone_set('America/New_York');
       ?>
       <div class="overlay"></div>
       <div class="header">
-        <a class="logo" href="http://www.squeaky.com"><img src="images/logo-squeaky.png" alt="logo"></a>
+        <a class="logo" href="https://www.sofarsounds.com/nyc"><img src="images/logo-sofar.png" alt="logo"></a>
+        <a class="logo squeaky-logo" href="https://www.squeaky.com"><img src="images/logo-squeaky.png" alt="logo"></a>
       </div>
       <ul id="tweet-list">
         <?php

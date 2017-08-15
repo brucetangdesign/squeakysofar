@@ -1,11 +1,15 @@
 $(document).ready(function(){
-  rotateBg();
-  rotateTweets();
+  TweenMax.to($("body"),0.7,{opacity: 1,onComplete:startSlideShow});
   setMinHeight();
 
   $(window).on("resize",function(){
     setMinHeight();
   });
+
+  function startSlideShow(){
+    rotateBg();
+    rotateTweets();
+  }
 
   //set the minimum height of tge tweet container (fixes issue where scrollbar was appearing and dissapearing)
   function setMinHeight(){
@@ -92,20 +96,37 @@ $(document).ready(function(){
     function nextSlide(){
       $curTweet.addClass("hidden");
       TweenMax.set($curTweet,{clearProps:"all"});
+
+      /*
       if(curTweetNum < $tweetList.children().length-1){
         curTweetNum += 1;
       }
       else{
         curTweetNum = 0;
       }
+      */
       $curTweet = $($tweetList.children()[curTweetNum]);
       $curTweet.removeClass("hidden");
       TweenMax.from($curTweet,1.3,{x: -slideAmount, opacity: 0,  ease: Power3.easeOut, onComplete:killSlide});
+      curTweetNum += 1;
     }
 
     //slide tweet out
     function killSlide(){
-      TweenMax.to($curTweet,0.7,{x: slideAmount, opacity: 0, delay: 2, ease: Power3.easeIn, onComplete:nextSlide});
+      if(curTweetNum < $tweetList.children().length){
+        TweenMax.to($curTweet,0.7,{x: slideAmount, opacity: 0, delay: 2, ease: Power3.easeIn, onComplete:nextSlide});
+      }
+      else{
+        TweenMax.to($curTweet,0.7,{x: slideAmount, opacity: 0, delay: 2, ease: Power3.easeIn, onComplete:fadeToBlack});
+      }
+    }
+
+    function fadeToBlack(){
+      TweenMax.to($("body"),0.7,{opacity: 0,onComplete:refreshPage});
+    }
+
+    function refreshPage(){
+      location.reload();
     }
   }
 });
